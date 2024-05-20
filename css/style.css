@@ -1,0 +1,108 @@
+body
+{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(24, 24, 24);
+    color: white;
+
+}
+
+.logo
+{
+    height: 50px;
+    display: block;
+    margin-right: 50px;
+}
+
+.core 
+{
+    width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+h3{
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:30px;
+}
+
+.container
+{
+    font-weight: bold;
+    /* height: 345px; */
+    width: fit-content;
+    text-align: center;
+    display: inline-block;
+    margin: 10px;
+    overflow: hidden;
+}
+
+.container img
+{
+    height: 260px;
+    transition: transform 0.3s ease;
+    margin-bottom: 5px;
+}
+
+.container a:hover img
+{
+    transform: scale(1.05);
+}
+
+.principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .u1 img {
+    height: 300px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .u2 {
+    text-align:justify;
+    padding: 0 20px;
+  }
+
+  .video-container {
+    height: 300px;
+  }
+
+  .video-container iframe {
+
+    top: 0;
+    left: 0;
+    height: 100%;
+  }
+
+  .maj
+  {
+    margin-left: 30px;
+  }
+
+  .leform
+  {
+    width: fit-content;
+    margin: 0 auto;
+  }
+
+  .input-text {
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+  }
+  
+  .input-text:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+  }
