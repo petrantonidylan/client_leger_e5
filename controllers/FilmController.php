@@ -15,6 +15,7 @@ class FilmController
         require_once __DIR__ . "/../core/Connecteur.php";
         require_once __DIR__ ."/../models/Film.php";
         require_once __DIR__ ."/../models/Categorie.php";
+        require_once __DIR__ ."/../models/Log.php";
 
         $this -> connecteur = new Connecteur();
         $this -> connexion = $this -> connecteur -> connexion();
@@ -43,6 +44,10 @@ class FilmController
 
             case "update":
                 $this -> update();
+            break;
+
+            case "log":
+                $this -> log();
             break;
 
             default:
@@ -122,6 +127,12 @@ class FilmController
             $save = $Film -> update();
             header('Location: index.php?controller=film&action=detail&id='.$_POST["id"]);
         }
+    }
+
+    public function log(){
+        $Log = new Log($this -> connexion);
+        $lesLogs = $Log -> getAll();
+        $this -> view("log", array("logs" => $lesLogs));
     }
 
     // permet d'aller chercher la Vue correspondante en fonction de ce qu'on a besoin d'afficher à l'utilisateur

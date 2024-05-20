@@ -147,6 +147,18 @@ CREATE TABLE Utilisateur(
 INSERT INTO Utilisateur (utilisateur_login, utilisateur_pass)
 VALUES ('Dylan', 'root')
 
+CREATE TABLE Log(
+   log_id INT IDENTITY,
+   log_success BIT NOT NULL,
+   log_date DATE NOT NULL,
+   utilisateur_id INT NOT NULL,
+   PRIMARY KEY(log_id),
+   FOREIGN KEY(utilisateur_id) REFERENCES Utilisateur(utilisateur_id)
+);
+
+INSERT INTO Log (log_success, log_date, utilisateur_id)
+VALUES (1, '2024-05-20', 1);
+
 ---------------------------------------------------------
 
 --TRIGGERS

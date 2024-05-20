@@ -41,9 +41,25 @@ class Utilisateur
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
+        $currentDate = date('Y-m-d');
+
         if ($user && password_verify($utilisateur_pass, $user['utilisateur_pass'])) {
+            $query = $this->connexion->prepare("
+            INSERT INTO Log (log_success, log_date, utilisateur_id)
+            VALUES (1, :date, :utilisateur_id);
+            ");
+            $query->bindParam(':date', $currentDate);
+            $query->bindParam(':utilisateur_id', $user['utilisateur_id']);
+            $query->execute();
             return true;
         } else {
+            $query = $this->connexion->prepare("
+            INSERT INTO Log (log_success, log_date, utilisateur_id)
+            VALUES (0, :date, :utilisateur_id);
+            ");
+            $query->bindParam(':date', $currentDate);
+            $query->bindParam(':utilisateur_id', $user['utilisateur_id']);
+            $query->execute();
             return false;
         }
     }

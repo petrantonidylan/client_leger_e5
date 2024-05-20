@@ -18,6 +18,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?controller=Cachet">Cachets</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?controller=Film&action=log">Logs</a>
+                    </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?controller=Connexion&action=logout"><?php echo $_SESSION['utilisateur_login']." "; ?><i class="fa-solid fa-power-off"></i></a>
