@@ -14,6 +14,7 @@ class CategorieController
     {
         require_once __DIR__ . "/../core/Connecteur.php";
         require_once __DIR__ ."/../models/Categorie.php";
+        require_once __DIR__ ."/../models/Film.php";
 
         $this -> connecteur = new Connecteur();
         $this -> connexion = $this -> connecteur -> connexion();
@@ -69,13 +70,21 @@ class CategorieController
 
     // suppression
     public function delete()
-    {
+    {   
         if(isset($_GET["id"]))
         {
-            $Categorie = new Categorie($this -> connexion);
-            $Categorie -> setCategorieId($_GET["id"]);
-            $save = $Categorie -> delete();
-            header('Location: index.php?controller=Categorie');
+            $Film = new Film($this -> connexion);
+            $unFilm = $Film -> getByCategorieId($_GET["id"]);
+
+            if($unFilm == null){
+                $Categorie = new Categorie($this -> connexion);
+                $Categorie -> setCategorieId($_GET["id"]);
+                $save = $Categorie -> delete();
+                header('Location: index.php?controller=Categorie');
+            }
+            else{
+                header('Location: index.php?controller=Categorie');
+            }
         }
     }
 

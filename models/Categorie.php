@@ -71,9 +71,14 @@ class Categorie
     // SUPPRIMER UNE CATEGORIE
     public function delete()
     {
-        $query = $this -> connexion -> prepare("DELETE FROM ".$this->table." WHERE categorie_id = :id");
-        $query -> execute(array("id"=>$this->categorie_id));
-        $this -> connexion = null;
+        try{
+                $query = $this -> connexion -> prepare("DELETE FROM ".$this->table." WHERE categorie_id = :id");
+                $query -> execute(array("id"=>$this->categorie_id));
+                $this -> connexion = null;
+        }catch(Error $e)
+        {
+            echo "Impossible de supprimer une catégorie liée à au moins un film.";
+        }
         return "";
     }
 

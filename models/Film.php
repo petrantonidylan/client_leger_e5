@@ -217,4 +217,13 @@ class Film
             header('Location: index.php');
         }
     }
+
+    public function getByCategorieId($id)
+    {
+        $query = $this -> connexion -> prepare("SELECT * FROM ".$this -> table." WHERE Film.categorie_id = :id");
+        $query -> execute(array("id" => $id));
+        $result = $query -> fetchObject();
+        $this -> connexion = null;
+        return $result;
+    }
 }
